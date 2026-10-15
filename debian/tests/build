@@ -1,0 +1,49 @@
+#!/bin/sh
+# autopkgtest check: Build and run a program against inflatelib, to verify that the
+# headers and cmake files are installed correctly
+
+set -e
+
+WORKDIR=$(mktemp -d)
+trap "rm -rf $WORKDIR" 0 INT QUIT ABRT PIPE TERM
+cd $WORKDIR
+
+cat <<EOF > CMakeLists.txt
+cmake_minimum_required(VERSION 3.23)
+project(InflatelibTest)
+
+find_package(inflatelib REQUIRED)
+
+add_executable(inflatelibtest inflatelibtest.c)
+target_link_libraries(inflatelibtest PRIVATE inflatelib)
+EOF
+
+cat <<EOF > inflatelibtest.c
+#include <inflatelib.h>
+#include <stdio.h>
+
+int main()
+{
+    inflatelib_stream stream = { 0 };
+
+    if (inflatelib_init(&stream) != INFLATELIB_OK)
+    {
+        printf("%s\n", stream.error_msg);
+        return 1;
+    }
+
+    inflatelib_destroy(&stream);
+
+    return 0;
+}
+EOF
+
+cmake .
+echo "cmake: OK"
+
+make
+echo "build: OK"
+
+[ -x inflatelibtest ]
+./inflatelibtest
+echo "run: OK"

@@ -1,0 +1,51 @@
+From 2b8df44212782c7f9046c6654ec19660c804716c Mon Sep 17 00:00:00 2001
+From: Jan-Joost Spanjers <oss@hiberis.nl>
+Date: Sun, 18 Oct 2026 13:45:33 +0200
+Subject: [PATCH] Add CMAKE_INSTALL_CMAKEDIR variable for installing .cmake
+ files
+
+---
+ src/lib/CMakeLists.txt | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+Bug: https://github.com/microsoft/inflatelib/pull/29
+diff --git a/src/lib/CMakeLists.txt b/src/lib/CMakeLists.txt
+index 5912e91..90cfba8 100644
+--- a/src/lib/CMakeLists.txt
++++ b/src/lib/CMakeLists.txt
+@@ -2,6 +2,16 @@
+ include(CMakePackageConfigHelpers)
+ include(GNUInstallDirs)
+ 
++if(NOT DEFINED CMAKE_INSTALL_CMAKEDIR)
++    if(WIN32)
++        # Windows Layout
++        set(CMAKE_INSTALL_CMAKEDIR "cmake" CACHE STRING "")
++    else()
++        # Linux / Standard Unix Layout
++        set(CMAKE_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}" CACHE STRING "")
++    endif()
++endif()
++
+ if (${INFLATELIB_BUILD_SHARED})
+     add_library(inflatelib SHARED)
+ 
+@@ -76,7 +86,7 @@ install(
+     EXPORT inflatelib_export
+     FILE inflatelib-config.cmake
+     NAMESPACE inflatelib::
+-    DESTINATION cmake
++    DESTINATION "${CMAKE_INSTALL_CMAKEDIR}"
+     )
+ 
+ write_basic_package_version_file(
+@@ -85,5 +95,5 @@ write_basic_package_version_file(
+     )
+ install(FILES
+     "${CMAKE_CURRENT_BINARY_DIR}/inflatelib-config-version.cmake"
+-    DESTINATION cmake
++    DESTINATION "${CMAKE_INSTALL_CMAKEDIR}"
+     )
+-- 
+2.53.0
+

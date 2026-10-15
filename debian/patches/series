@@ -1,0 +1,2 @@
+Include-stddef.h-in-inflatelib.h-for-size_t.patch
+Add-CMAKE_INSTALL_CMAKEDIR-variable-for-installing-..patch

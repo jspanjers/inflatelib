@@ -1,0 +1,6 @@
+usr/lib/*/libinflatelib.so
+usr/include/inflatelib.h
+usr/include/inflatelib.hpp
+usr/lib/*/cmake/inflatelib/inflatelib-config-none.cmake
+usr/lib/*/cmake/inflatelib/inflatelib-config-version.cmake
+usr/lib/*/cmake/inflatelib/inflatelib-config.cmake

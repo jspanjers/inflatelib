@@ -1,0 +1,37 @@
+Source: inflatelib
+Section: libs
+Maintainer: Jan-Joost Spanjers <oss@hiberis.nl>
+Build-Depends:
+ debhelper-compat (= 14),
+ cmake,
+Standards-Version: 4.7.4
+Homepage: https://github.com/microsoft/inflatelib
+#Vcs-Browser: https://salsa.debian.org/debian/inflatelib
+#Vcs-Git: https://salsa.debian.org/debian/inflatelib.git
+
+Package: inflatelib-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ libinflatelib0 (= ${binary:Version}),
+ ${misc:Depends},
+Description: Deflate/Deflate64 decompression library -- development files
+ InflateLib is a Deflate/Deflate64 decompression library written in C based
+ off dotnet's System.IO.Compression implementation.
+ .
+ This package provides the headers and development files needed to
+ build applications using inflatelib.
+
+Package: libinflatelib0
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: Deflate/Deflate64 decompression library
+ InflateLib is a Deflate/Deflate64 decompression library written in C based
+ off dotnet's System.IO.Compression implementation.
+ .
+ This package provides the shared library needed to run applications
+ that link to it.

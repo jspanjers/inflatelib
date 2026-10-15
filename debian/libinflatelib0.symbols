@@ -1,0 +1,8 @@
+libinflatelib.so.0 libinflatelib0 #MINVER#
+* Build-Depends-Package: libinflate-dev
+ inflatelib_destroy@Base 0.3.0
+ inflatelib_inflate64@Base 0.3.0
+ inflatelib_inflate@Base 0.3.0
+ inflatelib_init_@Base 0.3.0
+ inflatelib_reset@Base 0.3.0
+ inflatelib_version@Base 0.3.0

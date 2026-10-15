@@ -1,0 +1,32 @@
+From 5820c6d1a25db8ce4ba6729a8c6fa59fd1ad8c37 Mon Sep 17 00:00:00 2001
+From: Jan-Joost Spanjers <oss@hiberis.nl>
+Date: Sun, 18 Oct 2026 13:09:54 +0200
+Subject: [PATCH] Include stddef.h in inflatelib.h for size_t
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When compiling with gcc on Linux, including inflatelib.h
+gave this error:
+
+/usr/include/inflatelib.h:56:55: error: unknown type name ‘size_t’
+---
+ src/include/inflatelib.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+Bug: https://github.com/microsoft/inflatelib/pull/29
+diff --git a/src/include/inflatelib.h b/src/include/inflatelib.h
+index 037c95d..8513cdf 100644
+--- a/src/include/inflatelib.h
++++ b/src/include/inflatelib.h
+@@ -9,6 +9,7 @@
+ #ifndef INFLATELIB_H
+ #define INFLATELIB_H
+ 
++#include <stddef.h>
+ #include <stdint.h>
+ 
+ #ifdef __has_attribute
+-- 
+2.53.0
+
