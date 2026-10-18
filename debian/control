@@ -1,10 +1,12 @@
 Source: inflatelib
 Section: libs
-Maintainer: Jan-Joost Spanjers <oss@hiberis.nl>
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Jan-Joost Spanjers <oss@hiberis.nl>
 Build-Depends:
- debhelper-compat (= 14),
+ debhelper-compat (= 13),
  cmake,
-Standards-Version: 4.7.4
+Standards-Version: 4.6.2
 Homepage: https://github.com/microsoft/inflatelib
 #Vcs-Browser: https://salsa.debian.org/debian/inflatelib
 #Vcs-Git: https://salsa.debian.org/debian/inflatelib.git
