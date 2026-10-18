@@ -1,3 +1,9 @@
+inflatelib (0.3.0-1~ppa1) stonking; urgency=medium
+
+  * Publish 0.3.0-1~ppa1.
+
+ -- Jan-Joost Spanjers <oss@hiberis.nl>  Fri, 16 Oct 2026 10:38:40 +0200
+
 inflatelib (0.3.0-1) UNRELEASED; urgency=medium
 
   * Debian packaging 0.3.0-1.
