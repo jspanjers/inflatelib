@@ -1,3 +1,9 @@
+inflatelib (0.3.0-1~ppa1~ubuntu26.04) resolute; urgency=medium
+
+  * Publish 0.3.0-1~ppa1~ubuntu26.04.
+
+ -- Jan-Joost Spanjers <oss@hiberis.nl>  Sun, 18 Oct 2026 17:02:40 +0200
+
 inflatelib (0.3.0-1~ppa1) stonking; urgency=medium
 
   * Publish 0.3.0-1~ppa1.
